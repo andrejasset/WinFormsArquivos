@@ -14,8 +14,8 @@ namespace WinFormsArquivos
 
         private void bntAbrirArquivo_Click(object sender, EventArgs e)
         {
-           // se o retorno do método ShowDialog() for ok 
-           if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            // se o retorno do método ShowDialog() for ok 
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //instancia StreanReader para ler o arquivo
                 StreamReader arq = new StreamReader(openFileDialog1.FileName);
@@ -28,6 +28,24 @@ namespace WinFormsArquivos
                 //fecha o arquivo
                 arq.Close();
 
+            }
+        }
+
+        private void btnSalvarComo_Click(object sender, EventArgs e)
+        {
+            //se o retorno do método ShowDialog() for ok
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //declaração da variaável que vai salvar o arquivo
+                StreamWriter Arq = new StreamWriter(saveFileDialog1.FileName);
+                //Para cada linha no TextBox
+                foreach (string s in textBox1.Lines)
+                {
+                    //escreve uma linha no arquivo
+                    Arq.WriteLine(s);
+                }
+                //fecha o arquivo 
+                Arq.Close();
             }
         }
     }
